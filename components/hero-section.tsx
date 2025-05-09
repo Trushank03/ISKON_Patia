@@ -7,7 +7,7 @@ export function HeroSection() {
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-          <source src="/iskcon-temple-kharghar.mp4" type="video/mp4" />
+          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ariel%20view%20of%20iskcon%20temple%20kharghar%21-rcJMlSuO6VGCs8uMkMMzosQKMJDGH3.mp4" type="video/mp4" />
           {/* Fallback image if video doesn't load */}
           <Image
             src="/placeholder.svg?key=qol9y"
