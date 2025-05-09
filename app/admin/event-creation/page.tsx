@@ -135,10 +135,10 @@ export default function EventCreationPage() {
 
       // In a real implementation, this would be an actual API call
       // For example:
-      // const response = await fetch("http://127.0.0.1:8000/api/notice/notices/", {
-      //   method: "POST",
-      //   body: formData
-      // })
+      const response = await fetch("http://127.0.0.1:8000/api/notice/notices/", {
+        method: "POST",
+        body: formData
+      })
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500))
