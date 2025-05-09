@@ -12,24 +12,31 @@ export default function CottagesPage() {
       {/* Hero Section */}
       <section className="relative w-full bg-amber-50">
         <div className="absolute inset-0 w-full h-full">
-          <Image src="/images/cream-watercolor-bg.png" alt="Background texture" fill className="object-cover" />
+          <Image
+            src="/images/cream-watercolor-texture.jpg"
+            alt="Background texture"
+            fill
+            className="object-cover opacity-80"
+          />
         </div>
 
-        <div className="relative z-10 px-4 py-8 md:py-12 max-w-7xl mx-auto">
+        <div className="relative z-10 px-4 py-6 md:py-8 max-w-7xl mx-auto">
           <AnimateOnView animation="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-6 md:mb-0 md:w-3/4">
-                <h1 className="text-primary text-2xl md:text-3xl font-bold mb-2">Your Spiritual Second Home Awaits</h1>
-                <p className="text-primary text-sm md:text-base">
+              <div className="mb-6 md:mb-0 md:w-3/5">
+                <h1 className="text-[#B94A3E] text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                  Your Spiritual Second Home Awaits
+                </h1>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg mb-2">
                   Own a cottage in a 15-acre devotional sanctuary where Bhakti, sustainability, and serenity meet.
                 </p>
               </div>
-              <div className="w-full max-w-[200px] md:max-w-[250px]">
+              <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
-                  src="/images/temple-illustration.png"
+                  src="/images/temple-golden-illustration-new.png"
                   alt="Temple Illustration"
-                  width={250}
-                  height={150}
+                  width={300}
+                  height={200}
                   className="w-full h-auto"
                 />
               </div>
@@ -41,7 +48,7 @@ export default function CottagesPage() {
       {/* Live Where the Divine Resides */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl lg:text-3xl font-bold text-center mb-6">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6">
             Live Where the Divine Resides
           </h2>
         </AnimateOnView>
@@ -65,27 +72,33 @@ export default function CottagesPage() {
             <ul className="space-y-2 md:space-y-3 mb-6">
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Live footsteps away from the temple</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">
+                  Live footsteps away from the temple
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Serene environment & community</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">Serene environment & community</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Participate in daily Bhakti & Yoga practices</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">
+                  Participate in daily Bhakti & Yoga practices
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Spiritual learning at your doorstep</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">
+                  Spiritual learning at your doorstep
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Serve cows & live sustainably</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">Serve cows & live sustainably</span>
               </li>
             </ul>
 
-            <p className="text-gray-800 text-sm md:text-base italic">
+            <p className="text-gray-800 text-sm sm:text-base md:text-lg italic mb-6 sm:mb-12">
               "Not just property. It's a spiritual investment in your soul's journey."
             </p>
           </AnimateOnView>
@@ -95,7 +108,7 @@ export default function CottagesPage() {
       {/* Cottage Details */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8">Cottage Details</h2>
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">Cottage Details</h2>
         </AnimateOnView>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-6">
@@ -134,11 +147,11 @@ export default function CottagesPage() {
 
         <div className="max-w-4xl mx-auto">
           <AnimateOnView animation="fade-up" delay={200}>
-            <p className="text-center text-gray-800 text-sm md:text-base mb-4">
+            <p className="text-center text-gray-800 text-sm sm:text-base md:text-lg mb-4">
               Cottage Type: 1BHK | Approx. 600-1000 sqft (customizable finishes)
             </p>
 
-            <p className="text-center text-gray-800 text-sm md:text-base mb-6">
+            <p className="text-center text-gray-800 text-sm sm:text-base md:text-lg mb-6 sm:mb-12">
               Structure: Eco-built, Vaastu-compliant, Satvik architecture
             </p>
           </AnimateOnView>
@@ -149,19 +162,21 @@ export default function CottagesPage() {
             <ul className="space-y-2 md:space-y-3 mb-8">
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Attached bath and mini-kitchen</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">Attached bath and mini-kitchen</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Front veranda and garden space</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">Front veranda and garden space</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">Power backup, solar panels (optional)</span>
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">
+                  Power backup, solar panels (optional)
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2 text-lg">•</span>
-                <span className="text-gray-800 text-sm md:text-base">
+                <span className="text-gray-800 text-sm sm:text-base md:text-lg">
                   Access to temple, prasadam, library, wellness areas
                 </span>
               </li>
@@ -173,10 +188,12 @@ export default function CottagesPage() {
       {/* Pricing & Ownership */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl lg:text-3xl font-bold text-center mb-4">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4">
             Pricing & Ownership Model
           </h2>
-          <p className="text-center text-gray-700 text-sm md:text-base mb-8">Transparent. Ethical. Devotional.</p>
+          <p className="text-center text-gray-700 text-sm sm:text-base md:text-lg mb-8">
+            Transparent. Ethical. Devotional.
+          </p>
         </AnimateOnView>
 
         <AnimateOnView animation="fade-in" delay={200}>
@@ -184,34 +201,44 @@ export default function CottagesPage() {
             <table className="min-w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="py-2 px-3 text-left text-xs md:text-sm font-medium text-gray-700">Ownership Type</th>
-                  <th className="py-2 px-3 text-left text-xs md:text-sm font-medium text-gray-700">Area (Sqft)</th>
-                  <th className="py-2 px-3 text-left text-xs md:text-sm font-medium text-gray-700">
+                  <th className="py-2 px-3 text-left text-xs sm:text-sm md:text-base font-medium text-gray-700">
+                    Ownership Type
+                  </th>
+                  <th className="py-2 px-3 text-left text-xs sm:text-sm md:text-base font-medium text-gray-700">
+                    Area (Sqft)
+                  </th>
+                  <th className="py-2 px-3 text-left text-xs sm:text-sm md:text-base font-medium text-gray-700">
                     One-Time Price (₹)
                   </th>
-                  <th className="py-2 px-3 text-left text-xs md:text-sm font-medium text-gray-700">Benefits</th>
+                  <th className="py-2 px-3 text-left text-xs sm:text-sm md:text-base font-medium text-gray-700">
+                    Benefits
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Seva Owner</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">600</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">₹40,00,000</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Lifetime access, personalized seva</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">Seva Owner</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">600</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">₹40,00,000</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">
+                    Lifetime access, personalized seva
+                  </td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Bhakti Owner</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">750</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">₹50,00,000</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">Bhakti Owner</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">750</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">₹50,00,000</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">
                     Priority cottage booking during major festivals
                   </td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Sankirtan Owner</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Custom Duplex</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Price on Request</td>
-                  <td className="py-3 px-3 text-xs md:text-sm text-gray-800">Personalized family nameplates, etc.</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">Sankirtan Owner</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">Custom Duplex</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">Price on Request</td>
+                  <td className="py-3 px-3 text-xs sm:text-sm md:text-base text-gray-800">
+                    Personalized family nameplates, etc.
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -222,7 +249,7 @@ export default function CottagesPage() {
       {/* Testimonials */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">
             Testimonials from Spiritual Property Owners
           </h2>
         </AnimateOnView>
@@ -243,10 +270,10 @@ export default function CottagesPage() {
           </AnimateOnView>
 
           <AnimateOnView animation="fade-in" delay={300} className="md:w-2/3">
-            <p className="text-gray-800 text-sm md:text-base italic mb-4">
+            <p className="text-gray-800 text-sm sm:text-base md:text-lg italic mb-4">
               "Owning a cottage here was the best spiritual decision for our family"
             </p>
-            <p className="text-primary text-sm md:text-base font-medium">
+            <p className="text-primary text-sm sm:text-base md:text-lg font-medium">
               — Smt. Meera Rao,
               <br />
               Hyderabad
@@ -258,7 +285,7 @@ export default function CottagesPage() {
       {/* Inquiry Form */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">
             Inquiry & Expression of Interest Form
           </h2>
         </AnimateOnView>
@@ -268,7 +295,7 @@ export default function CottagesPage() {
             <h3 className="text-gray-800 font-semibold text-base md:text-lg mb-2">
               Reserve Your Cottage – Limited Units Available
             </h3>
-            <p className="text-gray-700 text-sm md:text-base">
+            <p className="text-gray-700 text-sm sm:text-base md:text-lg">
               Take the first step towards a devotional lifestyle amidst nature and divinity
             </p>
           </div>
@@ -277,8 +304,8 @@ export default function CottagesPage() {
         <AnimateOnView animation="fade-in" delay={300}>
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-6">
-              <h4 className="text-gray-800 font-medium text-sm md:text-base mb-4">Form Fields:</h4>
-              <ul className="space-y-1 text-gray-700 text-xs md:text-sm">
+              <h4 className="text-gray-800 font-medium text-sm md:text-lg mb-4">Form Fields:</h4>
+              <ul className="space-y-1 text-gray-700 text-xs sm:text-sm md:text-base">
                 <li>Full Name (Text Input)</li>
                 <li>Phone Number (Text Input – Mobile validation)</li>
                 <li>Email Address (Text Input – Email validation)</li>
@@ -294,11 +321,13 @@ export default function CottagesPage() {
               <div className="w-4 h-4 border border-primary rounded flex items-center justify-center">
                 <div className="w-2 h-2 bg-primary rounded-sm"></div>
               </div>
-              <span className="text-gray-800 text-xs md:text-sm">I wish to schedule a site visit or video call</span>
+              <span className="text-gray-800 text-xs sm:text-sm md:text-base">
+                I wish to schedule a site visit or video call
+              </span>
             </div>
 
             <div className="flex justify-center mb-6">
-              <button className="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-2 rounded-md text-sm md:text-base transition-transform duration-300 hover:scale-105">
+              <button className="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-2 rounded-md text-sm sm:text-base md:text-lg transition-transform duration-300 hover:scale-105">
                 Submit
               </button>
             </div>
@@ -307,17 +336,19 @@ export default function CottagesPage() {
               <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center">
                 <span className="text-primary text-xs">✓</span>
               </div>
-              <span className="text-gray-800 text-xs md:text-sm">Request a Call from Seva Coordinator</span>
+              <span className="text-gray-800 text-xs sm:text-sm md:text-base">
+                Request a Call from Seva Coordinator
+              </span>
             </div>
 
             <div className="flex items-center justify-center space-x-2 mb-6">
               <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center">
                 <span className="text-primary text-xs">✓</span>
               </div>
-              <span className="text-gray-800 text-xs md:text-sm">Auto-Reply Message (on submission)</span>
+              <span className="text-gray-800 text-xs sm:text-sm md:text-base">Auto-Reply Message (on submission)</span>
             </div>
 
-            <p className="text-center text-primary text-xs md:text-sm italic">
+            <p className="text-center text-primary text-xs sm:text-sm md:text-base italic">
               "Thank you! Our team will connect with you within 24 hours with availability and details. Hare Krishna!"
             </p>
           </div>
@@ -327,7 +358,7 @@ export default function CottagesPage() {
       {/* Call to Action */}
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl md:text-2xl font-bold text-center mb-8">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">
             Plant the Roots of Devotion Where It Blossoms Forever
           </h2>
         </AnimateOnView>
@@ -336,7 +367,7 @@ export default function CottagesPage() {
           <AnimateOnView animation="fade-up" delay={200}>
             <Link
               href="/cottages/brochure"
-              className="bg-primary hover:bg-primary/90 text-white font-medium px-4 py-2 rounded-md inline-block text-sm md:text-base w-full sm:w-auto text-center transition-transform duration-300 hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-white font-medium px-4 py-2 rounded-md inline-block text-sm sm:text-base md:text-lg w-full sm:w-auto text-center transition-transform duration-300 hover:scale-105"
             >
               Request Brochure / Pricing
             </Link>
@@ -345,7 +376,7 @@ export default function CottagesPage() {
           <AnimateOnView animation="fade-up" delay={300}>
             <Link
               href="/cottages/visit"
-              className="bg-primary hover:bg-primary/90 text-white font-medium px-4 py-2 rounded-md inline-block text-sm md:text-base w-full sm:w-auto text-center transition-transform duration-300 hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-white font-medium px-4 py-2 rounded-md inline-block text-sm sm:text-base md:text-lg w-full sm:w-auto text-center transition-transform duration-300 hover:scale-105"
             >
               Book a Site Visit
             </Link>

@@ -2,11 +2,11 @@
 import { motion } from "framer-motion"
 import { X } from "lucide-react"
 
-interface MobileMenuProps {
+interface DesktopMenuProps {
   onClose: () => void
 }
 
-export function MobileMenu({ onClose }: MobileMenuProps) {
+export function DesktopMenu({ onClose }: DesktopMenuProps) {
   const handleNavigation = (path: string) => {
     // Close the menu first
     onClose()
@@ -18,15 +18,15 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 h-full w-64 md:w-80 bg-white shadow-lg z-20 overflow-y-auto"
+      className="fixed top-0 left-0 h-full w-80 bg-white shadow-lg z-20 overflow-y-auto"
       initial={{ x: -300 }}
       animate={{ x: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div className="flex justify-between items-center p-4 md:p-6 border-b">
-        <h2 className="text-lg md:text-xl font-medium text-primary">Menu</h2>
+      <div className="flex justify-between items-center p-6 border-b">
+        <h2 className="text-xl font-medium text-primary">Menu</h2>
         <button onClick={onClose} className="text-gray-500 hover:text-primary">
-          <X size={20} />
+          <X size={24} />
         </button>
       </div>
 
@@ -35,7 +35,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               Home
             </button>
@@ -43,7 +43,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/about")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               About
             </button>
@@ -51,7 +51,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/facilities")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               Facilities
             </button>
@@ -59,7 +59,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/cottages")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               Cottages
             </button>
@@ -67,7 +67,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/donate")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               Donation
             </button>
@@ -75,7 +75,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           <li className="border-b border-gray-100">
             <button
               onClick={() => handleNavigation("/contact")}
-              className="block w-full text-left py-3 px-4 md:py-4 md:px-6 text-gray-800 md:text-lg hover:bg-primary/10 hover:text-primary transition-colors"
+              className="block w-full text-left py-4 px-6 text-lg hover:bg-primary/10 hover:text-primary transition-colors text-gray-800"
             >
               Contact us
             </button>
