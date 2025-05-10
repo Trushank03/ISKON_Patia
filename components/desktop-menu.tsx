@@ -17,6 +17,7 @@ export function DesktopMenu({ isOpen, onClose }: DesktopMenuProps) {
   const menuItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
+    { path: "/events", label: "Events" },
     { path: "/facilities", label: "Facilities" },
     { path: "/cottages", label: "Cottages" },
     { path: "/donate", label: "Donation" },

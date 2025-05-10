@@ -136,9 +136,9 @@ export function Footer() {
             <div>
               <h3 className="text-primary text-xl font-semibold mb-4">Contact</h3>
               <ul className="space-y-2">
-                <li className="text-gray-800">Address</li>
-                <li className="text-gray-800">Phone</li>
-                <li className="text-gray-800">Email</li>
+                <li className="text-gray-800">ISKCON Patia, Bhubaneswar</li>
+                <li className="text-gray-800">+91 1234567890</li>
+                <li className="text-gray-800">info@iskconpatia.org</li>
               </ul>
             </div>
           </div>
@@ -146,8 +146,42 @@ export function Footer() {
           {/* Location Map */}
           <div>
             <h3 className="text-primary text-xl font-semibold mb-4">Location Map</h3>
-            <div className="h-40 bg-gray-100 rounded-md relative overflow-hidden">
-              <Image src="/map-location-pin.png" alt="Location Map" fill className="object-cover" />
+            <div className="h-40 rounded-md relative overflow-hidden border border-gray-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.2825767285577!2d85.82516417597425!3d20.356312586362856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909abd700711b%3A0x5317e2321ccc3b03!2sISKCON%20Patia!5e0!3m2!1sen!2sin!4v1715350402000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ISKCON Patia Location"
+                className="w-full h-full"
+              ></iframe>
+            </div>
+            <div className="mt-2">
+              <a
+                href="https://www.google.com/maps/place/ISKCON+Patia/@20.3563126,85.8251642,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909abd700711b:0x5317e2321ccc3b03!8m2!3d20.3563076!4d85.8277391!16s%2Fg%2F11rr7q0s28"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary text-sm hover:underline flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mr-1"
+                >
+                  <path d="M9 18l6-6-6-6"></path>
+                </svg>
+                Get Directions
+              </a>
             </div>
           </div>
         </div>
@@ -156,7 +190,7 @@ export function Footer() {
       {/* Bottom Footer */}
       <div className="border-t border-gray-200 mt-8">
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-600 text-sm">© 2025, Iskcon Barang, Patia, All Rights Reserved</p>
+          <p className="text-gray-600 text-sm">© 2025, Iskcon Patia, Bhubaneswar, All Rights Reserved</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <Link href="/privacy-policy" className="text-gray-600 hover:text-primary text-sm">
               Privacy Policy

@@ -156,9 +156,11 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-medium text-gray-800">Address</h4>
                     <p className="text-gray-600">
-                      Sanatana Dharma Centre
+                      ISKCON Temple
                       <br />
-                      Shanti Bhumi, Pune, Maharashtra
+                      Nandankanan Road, Patia
+                      <br />
+                      Bhubaneswar, Odisha 751024
                       <br />
                       India
                     </p>
@@ -329,8 +331,44 @@ export default function ContactPage() {
         </AnimateOnView>
 
         <AnimateOnView animation="fade-in" delay={200}>
-          <div className="w-full h-[300px] md:h-[400px] bg-gray-200 rounded-lg overflow-hidden">
-            <Image src="/map-location-pin.png" alt="Map Location" fill className="object-cover" />
+          <div className="w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.6628398573774!2d85.82516421491993!3d20.356312636362096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909abd700711b%3A0x5317e2321ccc3b03!2sISKCON%20Patia!5e0!3m2!1sen!2sin!4v1683900000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="ISKCON Patia, Bhubaneswar Location"
+              aria-label="Google Maps showing ISKCON Patia location"
+            ></iframe>
+          </div>
+          <div className="mt-4 text-center">
+            <a
+              href="https://www.google.com/maps/place/ISKCON+Patia/@20.3563126,85.8251642,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909abd700711b:0x5317e2321ccc3b03!8m2!3d20.3563076!4d85.8277391!16s%2Fg%2F11rr7q0s28?hl=en&entry=ttu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
+            >
+              Get Directions
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="ml-1"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
           </div>
         </AnimateOnView>
       </section>
