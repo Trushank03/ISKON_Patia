@@ -6,7 +6,7 @@ import { AnimateOnView } from "@/components/animate-on-view"
 
 export default function CottagesPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden w-full">
       <Header />
 
       {/* Hero Section */}
@@ -197,7 +197,7 @@ export default function CottagesPage() {
         </AnimateOnView>
 
         <AnimateOnView animation="fade-in" delay={200}>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto w-full">
             <table className="min-w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-200">

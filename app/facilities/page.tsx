@@ -6,7 +6,7 @@ import { AnimateOnView } from "@/components/animate-on-view"
 
 export default function FacilitiesPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden w-full">
       <Header />
 
       {/* Hero Section */}

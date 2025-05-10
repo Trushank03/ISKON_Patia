@@ -33,7 +33,7 @@ export function HeroSection() {
             Donate Now
           </Link>
           <Link
-            href="/vision"
+            href="/about"
             className="bg-white hover:bg-gray-100 text-green-600 font-medium px-6 sm:px-10 py-2 sm:py-4 rounded-md text-base sm:text-xl border border-green-600 transition-transform duration-300 hover:scale-105"
           >
             Explore The Vision

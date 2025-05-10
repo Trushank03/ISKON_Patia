@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { MobileMenu } from "./mobile-menu"
@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation"
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
   const toggleMobileMenu = () => {
@@ -20,21 +19,6 @@ export function Header() {
   const toggleDesktopMenu = () => {
     setIsDesktopMenuOpen(!isDesktopMenuOpen)
   }
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMobileMenuOpen(false)
-        setIsDesktopMenuOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [])
 
   // Close menu when route changes
   useEffect(() => {
@@ -85,7 +69,7 @@ export function Header() {
                 Donate Now
               </Link>
 
-              <div className="md:hidden relative" ref={menuRef}>
+              <div className="md:hidden">
                 <button className="text-primary" onClick={toggleMobileMenu}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -118,21 +102,28 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Menus and Overlays */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={() => setIsMobileMenuOpen(false)}></div>
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <MobileMenu isOpen={true} onClose={() => setIsMobileMenuOpen(false)} />
+        </>
       )}
 
-      {/* Desktop Menu Overlay */}
       {isDesktopMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={() => setIsDesktopMenuOpen(false)}></div>
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsDesktopMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <DesktopMenu isOpen={true} onClose={() => setIsDesktopMenuOpen(false)} />
+        </>
       )}
-
-      {/* Mobile Menu Sidebar */}
-      {isMobileMenuOpen && <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />}
-
-      {/* Desktop Menu Sidebar */}
-      {isDesktopMenuOpen && <DesktopMenu onClose={() => setIsDesktopMenuOpen(false)} />}
     </>
   )
 }

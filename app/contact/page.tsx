@@ -14,21 +14,21 @@ export default function ContactPage() {
           <Image src="/images/cream-watercolor-texture.jpg" alt="Background texture" fill className="object-cover" />
         </div>
 
-        <div className="relative z-10 px-4 py-8 md:py-12 max-w-7xl mx-auto">
+        <div className="relative z-10 px-4 py-6 md:py-8 max-w-7xl mx-auto">
           <AnimateOnView animation="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-6 md:mb-0 md:w-3/4">
+              <div className="mb-6 md:mb-0">
                 <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Contact Us</h1>
-                <p className="text-primary text-sm sm:text-base md:text-lg mb-6 sm:mb-12">
+                <p className="text-primary text-sm sm:text-base md:text-lg">
                   We'd love to hear from you. Reach out with questions, feedback, or to schedule a visit.
                 </p>
               </div>
-              <div className="w-full max-w-[200px] md:max-w-[250px]">
+              <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
-                  src="/images/temple-illustration.png"
-                  alt="Temple Illustration"
-                  width={250}
-                  height={150}
+                  src="/images/golden-temple-illustration.png"
+                  alt="Golden Temple Illustration"
+                  width={300}
+                  height={200}
                   className="w-full h-auto"
                 />
               </div>
