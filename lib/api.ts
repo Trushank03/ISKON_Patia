@@ -97,9 +97,9 @@
 
 //     if (!response.ok) {
 //       const errorData = await response.json().catch(() => ({}))
-//       return { 
-//         data: null, 
-//         error: errorData.detail || `Error: ${response.status} ${response.statusText}` 
+//       return {
+//         data: null,
+//         error: errorData.detail || `Error: ${response.status} ${response.statusText}`
 //       };
 //     }
 
@@ -112,9 +112,9 @@
 //     return { data: responseData, error: null };
 //   } catch (error) {
 //     console.error("API request failed:", error)
-//     return { 
-//       data: null, 
-//       error: error instanceof Error ? error.message : 'Unknown error occurred' 
+//     return {
+//       data: null,
+//       error: error instanceof Error ? error.message : 'Unknown error occurred'
 //     };
 //   }
 // }
@@ -131,7 +131,6 @@
 
 //   return response
 // }
-
 
 // export const logoutUser = (): void => {
 //   clearTokens()
@@ -172,9 +171,9 @@
 //   return apiRequest(`/notice/notices/${id}/`, "GET")
 // }
 
-
 // API base URL
 const API_BASE_URL = "http://127.0.0.1:8000/api"
+// const PRODUCTION_API_BASE_URL = "https://iskconbarangapatia.com/api"
 
 // Token storage keys
 const ACCESS_TOKEN_KEY = "sanatana_access_token"
@@ -234,14 +233,18 @@ const apiRequest = async <T>(
   endpoint: string,
   method: string = 'GET',
   data?: any,
-  requiresAuth: boolean = true
+  requiresAuth: boolean = true,
+  isFormData: boolean = false
 )
 : Promise<ApiResponse<T>> =>
 {
   try {
     const url = `${API_BASE_URL}${endpoint}`
-    const headers: HeadersInit = {
-      "Content-Type": "application/json",
+    const headers: HeadersInit = {}
+
+    // Set content type only if not FormData
+    if (!isFormData) {
+      headers["Content-Type"] = "application/json"
     }
 
     // Add authorization header if required and token exists
@@ -257,14 +260,14 @@ const apiRequest = async <T>(
     const options: RequestInit = {
       method,
       headers,
-      body: data ? JSON.stringify(data) : undefined,
+      // Don't stringify if it's FormData
+      body: isFormData ? data : data ? JSON.stringify(data) : undefined,
     }
 
     const response = await fetch(url, options)
 
     // Handle unauthorized errors (token expired)
     if (response.status === 401) {
-      // Could implement token refresh here
       clearTokens()
       return { data: null, error: 'Session expired. Please login again.' };
     }
@@ -324,12 +327,12 @@ export const fetchUserProfile = async (): Promise<ApiResponse<any>> => {
   return apiRequest("/user/profile/", "GET", undefined, true)
 }
 
-export const createEvent = async (eventData: any): Promise<ApiResponse<any>> => {
-  return apiRequest("/notice/notices/", "POST", eventData, true)
+export const createEvent = async (eventData: FormData): Promise<ApiResponse<any>> => {
+  return apiRequest("/notice/notices/", "POST", eventData, true, true)
 }
 
-export const updateEvent = async (id: number, eventData: any): Promise<ApiResponse<any>> => {
-  return apiRequest(`/notice/notices/${id}/update/`, "PUT", eventData, true)
+export const updateEvent = async (id: number, eventData: FormData): Promise<ApiResponse<any>> => {
+  return apiRequest(`/notice/notices/${id}/update/`, "PUT", eventData, true, true)
 }
 
 export const deleteEvent = async (id: number): Promise<ApiResponse<any>> => {
@@ -337,7 +340,7 @@ export const deleteEvent = async (id: number): Promise<ApiResponse<any>> => {
 }
 
 export const fetchEvents = async (): Promise<ApiResponse<any[]>> => {
-  return apiRequest("/notice/notices/", "GET", undefined, true)
+  return apiRequest("/notice/notices/published/?page=1&page_size=10", "GET", undefined, true)
 }
 
 export const fetchEventById = async (id: number): Promise<ApiResponse<any>> => {
