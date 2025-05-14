@@ -7,6 +7,7 @@ import { Calendar, MapPin, Search, ChevronRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AnimateOnView } from "@/components/animate-on-view"
+import { fetchEvents } from "@/lib/api"
 
 // Define the Notice type based on the API structure
 interface Notice {
@@ -26,9 +27,33 @@ export default function EventsPage() {
   const [error, setError] = useState<string | null>(null)
 
   // Fetch notices when the component mounts
-  useEffect(() => {
-    fetchNotices()
+  // useEffect(() => {
+  //   fetchNotices()
+  // }, [])
+
+    useEffect(() => {
+    const loadEvents = async () => {
+      setIsLoading(true)
+      try {
+        const { data, error } = await fetchEvents()
+        if (error || !data) {
+          setError("Failed to fetch notices")
+          return
+        }
+
+        setNotices(data.results)  // ✅ store only the `results` array
+      } catch (err) {
+        console.error(err)
+        setError("An error occurred")
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadEvents()
   }, [])
+
+
 
   // Function to fetch all notices
   const fetchNotices = async () => {

@@ -663,9 +663,23 @@ import { HeroSection } from "@/components/hero-section"
 import { Footer } from "@/components/footer"
 import { Carousel } from "@/components/carousel"
 import { AnimateOnView } from "@/components/animate-on-view"
+import { fetchEvents } from "@/lib/api"
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
+  const [events, setEvents] = useState<any[]>([])
+
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      const { data, error } = await fetchEvents()
+      if (data?.results) {
+        setEvents(data.results)
+      }
+    }
+
+    loadEvents()
+  }, [])
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -1153,22 +1167,11 @@ export default function Home() {
           </AnimateOnView>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-7xl mx-auto">
-            {[
-              {
-                title: "Kartika Deepotsava 2024",
-                subtitle: "17 Oct - 15 Nov 2024",
-                image: "/images/kartika-deepotsava.png",
-              },
-              {
-                title: "Deep Daan in Kartika Month",
-                subtitle: "Special Lamp Offering Ceremony",
-                image: "/images/deep-daan-kartika.png",
-              },
-            ].map((item, index) => (
+            {events.slice(0, 2).map((item, index) => (
               <AnimateOnView key={index} animation="slide-in-right" delay={index * 150}>
                 <div className="relative overflow-hidden rounded-lg group card-hover-effect">
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={item.noticefile || "/placeholder.svg"}
                     alt={item.title}
                     width={600}
                     height={300}

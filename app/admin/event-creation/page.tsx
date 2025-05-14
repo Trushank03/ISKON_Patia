@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { deleteEvent } from "@/lib/api" // make sure this import is present
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -8,6 +9,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Save, Eye, ArrowLeft, Edit, Trash2, Plus, AlertCircle } from "lucide-react"
 import { AnimateOnView } from "@/components/animate-on-view"
+import { createEvent, fetchEvents, fetchUserNotices } from "@/lib/api"
 
 // Define the Notice type based on the API structure
 interface Notice {
@@ -35,11 +37,49 @@ export default function EventCreationPage() {
   const [notices, setNotices] = useState<Notice[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [publish, setPublish] = useState(false)
+
 
   // Fetch existing notices when the component mounts
+  // useEffect(() => {
+  //   const loadEvents = async () => {
+  //     setIsLoading(true)
+  //     try {
+  //       const { data, error } = await fetchEvents()
+  //       if (error || !data) {
+  //         setError("Failed to fetch notices")
+  //         return
+  //       }
+
+  //       setNotices(data.results)  // ✅ store only the `results` array
+  //     } catch (err) {
+  //       console.error(err)
+  //       setError("An error occurred")
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   }
+
+  //   loadEvents()
+  // }, [])
+
+
   useEffect(() => {
-    fetchNotices()
+    const loadUserNotices = async () => {
+      setIsLoading(true)
+      setError(null)
+      const { data, error } = await fetchUserNotices()
+      if (error) {
+        setError(error)
+      } else {
+        setNotices(data?.results || []) // or `setNotices(data)` if you're keeping full pagination info
+      }
+      setIsLoading(false)
+    }
+
+    loadUserNotices()
   }, [])
+
 
   // Function to fetch all notices
   const fetchNotices = async () => {
@@ -111,7 +151,70 @@ export default function EventCreationPage() {
     setFilePreview(null)
   }
 
-  // Function to create a new notice
+  // // Function to create a new notice
+  // const createNotice = async () => {
+  //   setIsSaving(true)
+  //   setError(null)
+
+  //   try {
+  //     // Prepare the form data
+  //     const formData = new FormData()
+  //     formData.append("noticeTitle", noticeTitle)
+  //     formData.append("noticeText", noticeText)
+  //     formData.append(
+  //       "globalNoticeID",
+  //       globalNoticeID ||
+  //       `NTC${Math.floor(Math.random() * 1000)
+  //         .toString()
+  //         .padStart(3, "0")}`,
+  //     )
+  //     formData.append("creationTime", new Date().toISOString())
+  //     formData.append("publish", String(publish))  
+  //     if (noticefile) {
+  //       formData.append("noticefile", noticefile)
+  //     }
+
+  //     // In a real implementation, this would be an actual API call
+  //     // For example:
+  //     const response = await fetch("https://iskconbarangapatia.com/api/notice/notices/", {
+  //       method: "POST",
+  //       body: formData
+  //     })
+
+  //     // Simulate API call
+  //     await new Promise((resolve) => setTimeout(resolve, 1500))
+
+  //     // Create a new mock notice
+  //     const newNotice: Notice = {
+  //       id: notices.length + 1,
+  //       noticeTitle,
+  //       noticeText,
+  //       creationTime: new Date().toISOString(),
+  //       globalNoticeID:
+  //         globalNoticeID ||
+  //         `NTC${Math.floor(Math.random() * 1000)
+  //           .toString()
+  //           .padStart(3, "0")}`,
+  //       noticefile: filePreview,
+  //     }
+
+  //     // Update the notices list
+  //     setNotices([...notices, newNotice])
+
+  //     // Reset the form
+  //     resetForm()
+
+  //     alert("Event created successfully!")
+  //   } catch (err) {
+  //     console.error("Error creating notice:", err)
+  //     setError("Failed to create event. Please try again.")
+  //   } finally {
+  //     setIsSaving(false)
+  //   }
+  // }
+
+
+
   const createNotice = async () => {
     setIsSaving(true)
     setError(null)
@@ -124,45 +227,35 @@ export default function EventCreationPage() {
       formData.append(
         "globalNoticeID",
         globalNoticeID ||
-          `NTC${Math.floor(Math.random() * 1000)
-            .toString()
-            .padStart(3, "0")}`,
+        `NTC${Math.floor(Math.random() * 1000)
+          .toString()
+          .padStart(3, "0")}`,
       )
       formData.append("creationTime", new Date().toISOString())
+      formData.append("publish", String(publish))
       if (noticefile) {
         formData.append("noticefile", noticefile)
       }
 
-      // In a real implementation, this would be an actual API call
-      // For example:
-      const response = await fetch("http://127.0.0.1:8000/api/notice/notices/", {
-        method: "POST",
-        body: formData
-      })
+      // ✅ Replace fetch with your custom API call
+      const { data, error } = await createEvent(formData)
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // Create a new mock notice
-      const newNotice: Notice = {
-        id: notices.length + 1,
-        noticeTitle,
-        noticeText,
-        creationTime: new Date().toISOString(),
-        globalNoticeID:
-          globalNoticeID ||
-          `NTC${Math.floor(Math.random() * 1000)
-            .toString()
-            .padStart(3, "0")}`,
-        noticefile: filePreview,
+      if (error || !data) {
+        throw new Error(error || "API error")
       }
 
-      // Update the notices list
+      // Use returned data if your backend responds with the saved object
+      const newNotice: Notice = {
+        id: data.id,
+        noticeTitle: data.noticeTitle,
+        noticeText: data.noticeText,
+        creationTime: data.creationTime,
+        globalNoticeID: data.globalNoticeID,
+        noticefile: filePreview, // or data.noticefile if you get URL back
+      }
+
       setNotices([...notices, newNotice])
-
-      // Reset the form
       resetForm()
-
       alert("Event created successfully!")
     } catch (err) {
       console.error("Error creating notice:", err)
@@ -171,6 +264,8 @@ export default function EventCreationPage() {
       setIsSaving(false)
     }
   }
+
+
 
   // Function to update an existing notice
   const updateNotice = async () => {
@@ -222,20 +317,44 @@ export default function EventCreationPage() {
   }
 
   // Function to delete a notice
+  // const deleteNotice = async (id: number) => {
+  //   if (!confirm("Are you sure you want to delete this event?")) return
+
+  //   try {
+
+
+  //     // In a real implementation, this would be an actual API call
+  //     // For example:
+  //     // await fetch(`http://localhost:8000/api/notice/notices/${id}/delete/`, {
+  //     //   method: "DELETE"
+  //     // })
+
+  //     // Simulate API call
+  //     await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  //     // Update the notices list
+  //     setNotices(notices.filter((notice) => notice.id !== id))
+
+  //     alert("Event deleted successfully!")
+  //   } catch (err) {
+  //     console.error("Error deleting notice:", err)
+  //     alert("Failed to delete event. Please try again.")
+  //   }
+  // }
+
+
+
   const deleteNotice = async (id: number) => {
     if (!confirm("Are you sure you want to delete this event?")) return
 
     try {
-      // In a real implementation, this would be an actual API call
-      // For example:
-      // await fetch(`http://localhost:8000/api/notice/notices/${id}/delete/`, {
-      //   method: "DELETE"
-      // })
+      const { error } = await deleteEvent(id)
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      if (error) {
+        throw new Error(error)
+      }
 
-      // Update the notices list
+      // Update the notices list on successful deletion
       setNotices(notices.filter((notice) => notice.id !== id))
 
       alert("Event deleted successfully!")
@@ -244,6 +363,7 @@ export default function EventCreationPage() {
       alert("Failed to delete event. Please try again.")
     }
   }
+
 
   // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -304,12 +424,17 @@ export default function EventCreationPage() {
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm">Welcome, Admin</span>
-              <Link
-                href="/loginadmin"
+              <button
+                onClick={() => {
+                  // Clear auth tokens before logout
+                  localStorage.removeItem("sanatana_access_token")
+                  localStorage.removeItem("sanatana_refresh_token") // if you store this too
+                  router.push("/loginadmin")
+                }}
                 className="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-md text-sm transition-colors duration-300"
               >
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -394,7 +519,7 @@ export default function EventCreationPage() {
               {/* Global Notice ID */}
               <div className="mb-6">
                 <label htmlFor="globalNoticeID" className="block text-gray-700 text-sm font-medium mb-2">
-                  Event ID (Optional)
+                  Event ID 
                 </label>
                 <input
                   type="text"
@@ -412,7 +537,7 @@ export default function EventCreationPage() {
               {/* Notice File Upload */}
               <div className="mb-6">
                 <label htmlFor="noticefile" className="block text-gray-700 text-sm font-medium mb-2">
-                  Event Image/File (Optional)
+                  Event Image/File 
                 </label>
 
                 {filePreview ? (
@@ -471,6 +596,21 @@ export default function EventCreationPage() {
                   required
                 ></textarea>
               </div>
+
+
+              <div className="mb-6 flex items-center">
+                <input
+                  type="checkbox"
+                  id="publish"
+                  checked={publish}
+                  onChange={(e) => setPublish(e.target.checked)}
+                  className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                />
+                <label htmlFor="publish" className="ml-2 block text-sm text-gray-700">
+                  Publish immediately
+                </label>
+              </div>
+
 
               {/* Submit Button */}
               <div className="flex justify-end">

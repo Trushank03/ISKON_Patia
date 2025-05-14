@@ -172,12 +172,14 @@
 // }
 
 // API base URL
-const API_BASE_URL = "http://127.0.0.1:8000/api"
-// const PRODUCTION_API_BASE_URL = "https://iskconbarangapatia.com/api"
+// const PRODUCTION_API_BASE_URL = "http://127.0.0.1:8000/api"
+const PRODUCTION_API_BASE_URL = "https://iskconbarangapatia.com/api"
 
 // Token storage keys
 const ACCESS_TOKEN_KEY = "sanatana_access_token"
 const REFRESH_TOKEN_KEY = "sanatana_refresh_token"
+
+
 
 // Types
 interface LoginCredentials {
@@ -189,7 +191,24 @@ interface AuthTokens {
   access: string
   refresh: string
 }
+export interface Notice {
+  id: number
+  noticeTitle: string
+  noticeText: string
+  creationTime: string
+  globalNoticeID: string
+  noticefile: string | null
+  publish: boolean
+  creater: number
+}
 
+
+export interface PaginatedResponse<T> {
+  count: number
+  next: string | null
+  previous: string | null
+  results: T[]
+}
 interface ApiResponse<T> {
   data: T | null
   error: string | null
@@ -239,7 +258,7 @@ const apiRequest = async <T>(
 : Promise<ApiResponse<T>> =>
 {
   try {
-    const url = `${API_BASE_URL}${endpoint}`
+    const url = `${PRODUCTION_API_BASE_URL}${endpoint}`
     const headers: HeadersInit = {}
 
     // Set content type only if not FormData
@@ -339,10 +358,18 @@ export const deleteEvent = async (id: number): Promise<ApiResponse<any>> => {
   return apiRequest(`/notice/notices/${id}/delete/`, "DELETE", undefined, true)
 }
 
-export const fetchEvents = async (): Promise<ApiResponse<any[]>> => {
-  return apiRequest("/notice/notices/published/?page=1&page_size=10", "GET", undefined, true)
+// ✅ Updated fetchEvents API
+export const fetchEvents = async (): Promise<ApiResponse<PaginatedResponse<Notice>>> => {
+  return apiRequest<PaginatedResponse<Notice>>("/notice/notices/published/?page=1&page_size=10", "GET", undefined, true)
 }
+
 
 export const fetchEventById = async (id: number): Promise<ApiResponse<any>> => {
   return apiRequest(`/notice/notices/${id}/`, "GET", undefined, true)
 }
+
+
+export const fetchUserNotices = async (): Promise<ApiResponse<PaginatedResponse<Notice>>> => {
+  return apiRequest<PaginatedResponse<Notice>>("/notice/notices/user/?page=1&page_size=10", "GET", undefined, true)
+}
+
