@@ -188,7 +188,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-200 mt-8">
+      {/* <div className="border-t border-gray-200 mt-8">
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm">© 2025, Iskcon Patia, Bhubaneswar, All Rights Reserved</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
@@ -201,7 +201,72 @@ export function Footer() {
             </Link>
           </div>
         </div>
+      </div> */}
+
+
+
+      {/* <div className="border-t border-gray-200 mt-8">
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+          <p className="text-gray-600 text-sm text-center md:text-left">
+            © 2025, Iskcon Patia, Bhubaneswar — All Rights Reserved
+          </p>
+          <div className="flex flex-col md:flex-row md:items-center md:space-x-4 text-center">
+            <div className="text-gray-600 text-sm">
+              <span className="inline-block">Crafted by</span>{' '}
+              <a
+                href="https://diracai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium hover:underline"
+              >
+                DiracAI Pvt. Ltd.
+              </a>
+            </div>
+            <div className="flex space-x-3 justify-center mt-1 md:mt-0">
+              <Link href="/privacy-policy" className="text-gray-600 hover:text-primary text-sm">
+                Privacy Policy
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link href="/terms-of-use" className="text-gray-600 hover:text-primary text-sm">
+                Terms of Use
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+
+
+      <div className="bg-white border-t border-gray-200 mt-8">
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-600 text-sm text-center md:text-left">
+            © 2025 <span className="font-semibold">ISKCON Patia, Bhubaneswar</span> — All Rights Reserved
+          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-sm text-center mt-2 md:mt-0">
+            <p className="text-gray-600">
+              Crafted by{" "}
+              <a
+                href="https://diracai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium hover:underline"
+              >
+                DiracAI Pvt. Ltd.
+              </a>
+            </p>
+            <div className="hidden sm:block text-gray-400">|</div>
+            <Link href="/privacy-policy" className="text-gray-600 hover:text-primary">
+              Privacy Policy
+            </Link>
+            <div className="hidden sm:block text-gray-400">|</div>
+            <Link href="/terms-of-use" className="text-gray-600 hover:text-primary">
+              Terms of Use
+            </Link>
+          </div>
+        </div>
       </div>
+
+
     </footer>
   )
 }
