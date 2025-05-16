@@ -259,6 +259,10 @@ export function Footer() {
               Privacy Policy
             </Link>
             <div className="hidden sm:block text-gray-400">|</div>
+            <Link href="/refund-policy" className="text-gray-600 hover:text-primary">
+              Refund Policy
+            </Link>
+            <div className="hidden sm:block text-gray-400">|</div>
             <Link href="/terms-of-use" className="text-gray-600 hover:text-primary">
               Terms of Use
             </Link>
