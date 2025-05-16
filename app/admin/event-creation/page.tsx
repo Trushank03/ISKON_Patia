@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { deleteEvent } from "@/lib/api" // make sure this import is present
+import { deleteEvent, updateEvent } from "@/lib/api" // make sure this import is present
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -266,55 +266,57 @@ export default function EventCreationPage() {
   }
 
 
+const updateNotice = async () => {
+  if (!editingId) return
 
-  // Function to update an existing notice
-  const updateNotice = async () => {
-    if (!editingId) return
+  setIsSaving(true)
+  setError(null)
 
-    setIsSaving(true)
-    setError(null)
+  try {
+    // Prepare the form data
+    const formData = new FormData()
+    formData.append("noticeTitle", noticeTitle)
+    formData.append("noticeText", noticeText)
+    formData.append("globalNoticeID", globalNoticeID)
+    formData.append("publish", String(publish))
 
-    try {
-      // Prepare the data for update
-      const updateData = {
-        noticeTitle,
-        noticeText,
-        globalNoticeID,
-      }
-
-      // In a real implementation, this would be an actual API call
-      // For example:
-      // const response = await fetch(`http://localhost:8000/api/notice/notices/${editingId}/update/`, {
-      //   method: "PUT",
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   },
-      //   body: JSON.stringify(updateData)
-      // })
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // Update the notices list
-      const updatedNotices = notices.map((notice) =>
-        notice.id === editingId ? { ...notice, noticeTitle, noticeText, globalNoticeID } : notice,
-      )
-
-      setNotices(updatedNotices)
-
-      // Reset the form and editing state
-      resetForm()
-      setIsEditing(false)
-      setEditingId(null)
-
-      alert("Event updated successfully!")
-    } catch (err) {
-      console.error("Error updating notice:", err)
-      setError("Failed to update event. Please try again.")
-    } finally {
-      setIsSaving(false)
+    if (noticefile) {
+      formData.append("noticefile", noticefile)
     }
+
+    // Call your update API
+    const { data, error } = await updateEvent(editingId, formData)
+
+    if (error || !data) {
+      throw new Error(error || "API error")
+    }
+
+    // Update notice in the list
+    const updatedNotices = notices.map((notice) =>
+      notice.id === editingId
+        ? {
+            ...notice,
+            noticeTitle: data.noticeTitle,
+            noticeText: data.noticeText,
+            globalNoticeID: data.globalNoticeID,
+            noticefile: filePreview, // Or data.noticefile if backend returns it
+          }
+        : notice,
+    )
+
+    setNotices(updatedNotices)
+    resetForm()
+    setIsEditing(false)
+    setEditingId(null)
+
+    alert("Event updated successfully!")
+  } catch (err) {
+    console.error("Error updating notice:", err)
+    setError("Failed to update event. Please try again.")
+  } finally {
+    setIsSaving(false)
   }
+}
 
   // Function to delete a notice
   // const deleteNotice = async (id: number) => {
