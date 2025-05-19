@@ -1,7 +1,9 @@
 "use client"
 
 import type React from "react"
+
 import { deleteEvent, updateEvent } from "@/lib/api" // make sure this import is present
+ 
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -265,6 +267,7 @@ export default function EventCreationPage() {
     }
   }
 
+ 
 
 const updateNotice = async () => {
   if (!editingId) return
