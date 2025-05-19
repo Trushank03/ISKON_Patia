@@ -6,10 +6,11 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AnimateOnView } from "@/components/animate-on-view"
-import { Check, ArrowRight, Heart, FileText, Shield, Mail } from "lucide-react"
+import { Check, Heart, Mail, Copy, CreditCard, Smartphone } from "lucide-react"
 
 export default function DonatePage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [copySuccess, setCopySuccess] = useState<string | null>(null)
 
   // Donation options as shown in the design
   const donationOptions = [
@@ -61,6 +62,19 @@ export default function DonatePage() {
     }).format(amount)
   }
 
+  // Copy to clipboard function
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        setCopySuccess(field)
+        setTimeout(() => setCopySuccess(null), 2000)
+      },
+      (err) => {
+        console.error("Could not copy text: ", err)
+      },
+    )
+  }
+
   return (
     <main className="min-h-screen bg-amber-50/30">
       <Header />
@@ -110,6 +124,114 @@ export default function DonatePage() {
             </p>
             <p className="text-gray-700 italic">– Bhagavad Gita 9:26</p>
           </div>
+        </div>
+      </section>
+
+      {/* Bank Details Section - NEW */}
+      <section className="py-8 px-4">
+        <div className="container mx-auto">
+          <AnimateOnView animation="fade-up">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-primary text-2xl font-bold text-center mb-6" style={{ color: "#B94A3E" }}>
+                Donation Bank Details
+              </h2>
+
+              <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 className="text-xl font-semibold mb-4 text-center">
+                  ISKCON PATIA (Temple Authorised Central Account)
+                </h3>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex flex-col space-y-1">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600 font-medium">Account Number:</span>
+                        <button
+                          onClick={() => copyToClipboard("50100641155734", "account")}
+                          className="text-primary hover:text-primary/80 flex items-center"
+                          aria-label="Copy account number"
+                        >
+                          <Copy size={16} className="mr-1" />
+                          {copySuccess === "account" ? "Copied!" : "Copy"}
+                        </button>
+                      </div>
+                      <span className="text-gray-800 font-semibold">50100641155734</span>
+                    </div>
+
+                    <div className="flex flex-col space-y-1">
+                      <span className="text-gray-600 font-medium">Account Name:</span>
+                      <span className="text-gray-800 font-semibold">ISKCON PATIA</span>
+                    </div>
+
+                    <div className="flex flex-col space-y-1">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600 font-medium">IFSC Code:</span>
+                        <button
+                          onClick={() => copyToClipboard("HDFC0002542", "ifsc")}
+                          className="text-primary hover:text-primary/80 flex items-center"
+                          aria-label="Copy IFSC code"
+                        >
+                          <Copy size={16} className="mr-1" />
+                          {copySuccess === "ifsc" ? "Copied!" : "Copy"}
+                        </button>
+                      </div>
+                      <span className="text-gray-800 font-semibold">HDFC0002542</span>
+                    </div>
+
+                    <div className="flex flex-col space-y-1">
+                      <span className="text-gray-600 font-medium">Branch:</span>
+                      <span className="text-gray-800 font-semibold">Patia, BBSR</span>
+                    </div>
+
+                    <div className="flex flex-col space-y-1">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600 font-medium">UPI ID:</span>
+                        <button
+                          onClick={() => copyToClipboard("iskconpatia.62770644@hdfcbank", "upi")}
+                          className="text-primary hover:text-primary/80 flex items-center"
+                          aria-label="Copy UPI ID"
+                        >
+                          <Copy size={16} className="mr-1" />
+                          {copySuccess === "upi" ? "Copied!" : "Copy"}
+                        </button>
+                      </div>
+                      <span className="text-gray-800 font-semibold">iskconpatia.62770644@hdfcbank</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="bg-white p-2 rounded-lg border border-gray-200 shadow-sm">
+                      <Image
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QR%20code%20Patia.jpg-SCgmZ0CEs7EpMcQNrTepcSWy7uHao9.jpeg"
+                        alt="ISKCON Patia UPI QR Code"
+                        width={200}
+                        height={200}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">Scan to donate via UPI</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-center space-x-6">
+                    <div className="flex items-center text-gray-700">
+                      <CreditCard className="mr-2 text-primary" size={20} />
+                      <span>Bank Transfer</span>
+                    </div>
+                    <div className="flex items-center text-gray-700">
+                      <Smartphone className="mr-2 text-primary" size={20} />
+                      <span>UPI Payment</span>
+                    </div>
+                  </div>
+                  <p className="text-center text-sm text-gray-600 mt-4">
+                    After making your donation, please send the transaction details to +91-7978776093 via WhatsApp for
+                    receipt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimateOnView>
         </div>
       </section>
 
@@ -187,33 +309,17 @@ export default function DonatePage() {
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">Payment Options</h3>
-                    <p className="text-gray-600 text-sm">Integrated via Razorpay Checkout</p>
-                    <p className="text-gray-600 text-sm">Supports: UPI, Debit/Credit Cards, Netbanking, Wallets</p>
-                  </div>
-                  <div className="mt-4 md:mt-0">
-                    <Image
-                      src="/images/payment-icon.png"
-                      alt="Payment Options"
-                      width={80}
-                      height={40}
-                      className="h-10 w-auto"
-                    />
-                  </div>
-                </div>
-
                 <div className="border-t border-gray-200 pt-4 mt-4">
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">Tax Exemption (80G Certified)</h3>
                   <p className="text-gray-600 text-sm">
                     All donations are eligible under Section 80G of the Income Tax Act.
                     <br />
-                    Auto-generated tax receipt will be emailed instantly after your donation.
+                    Please contact us for your tax receipt after making a donation.
                   </p>
                 </div>
               </div>
 
+              {/* Commenting out the payment gateway button
               <div className="text-center mb-12">
                 <Link
                   href="/donate/payment"
@@ -222,6 +328,7 @@ export default function DonatePage() {
                   Donate Now & Support Krishna's Mission
                 </Link>
               </div>
+              */}
             </div>
           </AnimateOnView>
         </div>
@@ -275,12 +382,19 @@ export default function DonatePage() {
                     </ul>
                   </div>
 
+                  <p className="text-gray-700 mb-4">
+                    To set up a monthly donation, please use the bank details above and set up a standing instruction
+                    with your bank.
+                  </p>
+
+                  {/* Commenting out the payment gateway button
                   <Link
                     href="/donate/payment?plan=monthly"
                     className="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-2 rounded-md transition-colors duration-300 inline-block"
                   >
                     Join Monthly Seva Plan
                   </Link>
+                  */}
                 </div>
               </div>
             </div>
@@ -355,7 +469,7 @@ export default function DonatePage() {
                     <div className="relative">
                       <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center">
                         <div className="text-brown-700">
-                          <FileText className="w-8 h-8 stroke-[1.5px]" />
+                          <CreditCard className="w-8 h-8 stroke-[1.5px]" />
                         </div>
                       </div>
                       <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-amber-400 rounded-full flex items-center justify-center text-white font-bold">
@@ -363,8 +477,8 @@ export default function DonatePage() {
                       </div>
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-medium text-gray-800">Fill your details</h3>
-                      <p className="text-gray-600">(Name, Email, Phone, PAN)</p>
+                      <h3 className="text-xl font-medium text-gray-800">Make the transfer</h3>
+                      <p className="text-gray-600">(Bank or UPI)</p>
                     </div>
                   </div>
 
@@ -376,7 +490,7 @@ export default function DonatePage() {
                     <div className="relative">
                       <div className="w-20 h-20 bg-amber-200 rounded-full flex items-center justify-center">
                         <div className="text-brown-700">
-                          <Shield className="w-8 h-8 stroke-[1.5px]" />
+                          <Smartphone className="w-8 h-8 stroke-[1.5px]" />
                         </div>
                       </div>
                       <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-amber-400 rounded-full flex items-center justify-center text-white font-bold">
@@ -384,8 +498,8 @@ export default function DonatePage() {
                       </div>
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-medium text-gray-800">Pay securely</h3>
-                      <p className="text-gray-600">via Razorpay</p>
+                      <h3 className="text-xl font-medium text-gray-800">Send details</h3>
+                      <p className="text-gray-600">via WhatsApp to +91-7978776093</p>
                     </div>
                   </div>
 
@@ -476,13 +590,9 @@ export default function DonatePage() {
                 />
               </div>
 
-              <Link
-                href="/donate/payment"
-                className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-md text-lg transition-transform duration-300 hover:scale-105 inline-flex items-center"
-              >
-                Yes, I Want to Donate to This Divine Cause
-                <ArrowRight size={18} className="ml-2" />
-              </Link>
+              <p className="text-gray-800 mb-6">
+                Make your donation today using the bank details or UPI QR code provided above.
+              </p>
             </div>
           </AnimateOnView>
         </div>
