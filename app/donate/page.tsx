@@ -93,14 +93,14 @@ export default function DonatePage() {
                   className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2"
                   style={{ color: "#B94A3E" }}
                 >
-                  Help Us Build a Home for Devotion, Peace, and Knowledge
+                  Support Our Mission of Devotion
                 </h1>
                 <p className="text-primary text-sm sm:text-base md:text-lg">
                   Your support empowers ISKCON to build a divine ecosystem
                 </p>
                 <p className="text-primary text-sm sm:text-base md:text-lg">that will inspire generations</p>
               </div>
-              <div className="w-full max-w-[250px] md:max-w-[300px]">
+              {/* <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
                   src="/images/golden-temple-illustration.png"
                   alt="Golden Temple Illustration"
@@ -108,7 +108,7 @@ export default function DonatePage() {
                   height={200}
                   className="w-full h-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </AnimateOnView>
         </div>

@@ -37,12 +37,12 @@ export default function ContactPage() {
           <AnimateOnView animation="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0">
-                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Contact Us</h1>
+                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Get in Touch with Us</h1>
                 <p className="text-primary text-sm sm:text-base md:text-lg">
                   "Your journey begins with a single step — towards Krishna."
                 </p>
               </div>
-              <div className="w-full max-w-[250px] md:max-w-[300px]">
+              {/* <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
                   src="/images/golden-temple-illustration.png"
                   alt="Golden Temple Illustration"
@@ -50,7 +50,7 @@ export default function ContactPage() {
                   height={200}
                   className="w-full h-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </AnimateOnView>
         </div>

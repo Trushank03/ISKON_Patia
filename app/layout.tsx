@@ -6,8 +6,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sanatana Dharma Centre",
-  description: "Experience the Divine Bliss of Bhakti & Nature's Lap",
+  title: "ISKCON Baranga-Patia",
+  description: "Welcome to ISKCON Baranga-Patia – A Spiritual Oasis of Lord Krishna's Mercy",
     generator: 'v0.dev'
 }
 

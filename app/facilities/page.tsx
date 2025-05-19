@@ -35,7 +35,7 @@ export default function FacilitiesPage() {
                   prayers, and participate in seva (service) for the pleasure of Lord Krishna.
                 </p>
               </div>
-              <div className="w-full max-w-[250px] md:max-w-[300px]">
+              {/* <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
                   src="/images/temple-golden-illustration-new.png"
                   alt="Temple Illustration"
@@ -43,7 +43,7 @@ export default function FacilitiesPage() {
                   height={200}
                   className="w-full h-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </AnimateOnView>
         </div>
@@ -64,7 +64,7 @@ export default function FacilitiesPage() {
           <AnimateOnView animation="slide-in-left" delay={200} className="md:w-2/5">
             <div className="rounded-lg overflow-hidden shadow-lg max-w-[450px] mx-auto">
               <Image
-                src="/images/iskcon-temple-entrance.png"
+                src="https://bhubaneswartourism.in/images/places-to-visit/headers/iskcon-temple-bhubaneswar-tourism-entry-fee-timings-holidays-reviews-header.jpg"
                 alt="ISKCON Temple Entrance"
                 width={450}
                 height={340}
@@ -155,7 +155,7 @@ export default function FacilitiesPage() {
           <AnimateOnView animation="slide-in-right" delay={200} className="md:w-1/3">
             <div className="rounded-lg overflow-hidden shadow-md max-w-[250px] mx-auto">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/srila-prabhupada-portrait-5WHZNoVXznyHuMriQ9mOwV6BXKBkWE.png"
+                src="https://theharekrishnamovement.org/wp-content/uploads/2011/01/sp11.jpg"
                 alt="Srila Prabhupada"
                 width={250}
                 height={300}
@@ -181,32 +181,32 @@ export default function FacilitiesPage() {
           {[
             {
               title: "Deity Worship",
-              image: "/images/kirtan-hall-interior.png",
+              image: "https://storage.ning.com/topology/rest/1.0/file/get/2526468957?profile=original",
               desc: "Assist in deity dressing, altar decoration, garland making, and preparing offerings for the Lord.",
             },
             {
               title: "Kitchen Service",
-              image: "/images/satwik-restaurant-interior.png",
+              image: "https://www.krishnatemple.com/wp-content/uploads/2022/05/prasadam_donations2.jpg",
               desc: "Help prepare prasadam for the deities and devotees. Learn the art of cooking with devotion.",
             },
             {
               title: "Book Distribution",
-              image: "/images/yoga-meditation-space.png",
+              image: "https://theharekrishnamovement.org/wp-content/uploads/2013/10/book-distribution-3.png",
               desc: "Participate in distributing Srila Prabhupada's books to spread Krishna consciousness.",
             },
             {
               title: "Temple Cleaning",
-              image: "/images/spiritual-cottage.png",
+              image: "https://storage.ning.com/topology/rest/1.0/file/get/12432634901?profile=RESIZE_400x",
               desc: "Help maintain the cleanliness and sanctity of the temple premises.",
             },
             {
               title: "Kirtan & Music",
-              image: "/images/vedic-corridor.png",
+              image: "https://storage.ning.com/topology/rest/1.0/file/get/2515282138?profile=original",
               desc: "Join the kirtan team to lead or participate in devotional singing and music.",
             },
             {
               title: "Festival Organization",
-              image: "/images/iskcon-temple-entrance.png",
+              image: "https://www.iskconbhubaneswar.com/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2FQviRd9WNL0XWrQkddIKvjM3JT5GeODrQB0EPgzdiXVFKIkyR&w=1920&q=75",
               desc: "Help organize and manage festivals like Janmashtami, Gaura Purnima, and Ratha Yatra.",
             },
           ].map((item, index) => (

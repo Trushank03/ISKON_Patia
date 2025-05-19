@@ -1522,7 +1522,7 @@ export default function Home() {
       <section className="py-6 sm:py-8 md:py-12 px-3 sm:px-4 md:px-8 max-w-7xl mx-auto w-full">
         <AnimateOnView animation="fade-up">
           <div className="text-center mb-4 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">Our Mission & Vision</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">Focus on spiritual service, community, and the mission of ISKCON.</h2>
             <div className="flex justify-center">
               <div className="w-full" style={{ maxWidth: "22rem" }}>
                 <Image
@@ -1842,7 +1842,7 @@ export default function Home() {
 
                 <div className="mb-4 sm:mb-8">
                   <h4 className="text-base sm:text-xl font-bold text-primary mb-1 sm:mb-2">Call/WhatsApp us</h4>
-                  <p className="text-xl sm:text-3xl font-bold text-primary">+91-9000000000</p>
+                  <p className="text-xl sm:text-3xl font-bold text-primary">+91-7978776093</p>
                 </div>
 
                 <Link

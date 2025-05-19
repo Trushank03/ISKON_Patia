@@ -173,15 +173,19 @@ export default function EventsPage() {
         <div className="absolute inset-0 w-full h-full">
           <Image src="/images/cream-watercolor-texture.jpg" alt="Background texture" fill className="object-cover" />
         </div>
-
-        <div className="relative z-10 px-4 py-12 md:py-16 max-w-7xl mx-auto">
+        <div className="relative z-10 px-4 py-6 md:py-8 max-w-7xl mx-auto">
           <AnimateOnView animation="fade-up">
-            <div className="text-center">
-              <h1 className="text-primary text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Events & Celebrations</h1>
-              <p className="text-gray-800 text-base md:text-xl max-w-3xl mx-auto">
-                Join us for divine celebrations, spiritual discourses, and community gatherings that nourish the soul
-                and deepen your connection with Krishna.
-              </p>
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="mb-6 md:mb-0 md:w-3/5">
+                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                  Temple Worship & Devotional
+                </h1>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg">
+                  Join us for divine celebrations, spiritual discourses, and community gatherings that nourish the soul
+                  and deepen your connection with Krishna.
+                </p>
+              </div>
+            
             </div>
           </AnimateOnView>
         </div>
@@ -254,7 +258,7 @@ export default function EventsPage() {
             <div className="bg-white rounded-lg shadow-md overflow-hidden mb-12">
               <div className="md:flex">
                 <div className="md:w-1/3 relative h-64 md:h-auto">
-                  <Image src="/bhakti-yoga.png" alt="Bhakti Yoga Practice" fill className="object-cover" />
+                  <Image src="https://i.ytimg.com/vi/3MkVfIaPTOA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDMDIJ8v6ijhjiPTl61M52rPNCQ5Q" alt="Bhakti Yoga Practice" fill className="object-cover" />
                 </div>
                 <div className="p-6 md:w-2/3">
                   <h3 className="text-primary text-xl md:text-2xl font-bold mb-4">Bhakti Yoga: The Path of Devotion</h3>
@@ -285,7 +289,7 @@ export default function EventsPage() {
               <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48">
                   <Image
-                    src="/placeholder.svg?height=300&width=400&query=bhagavad gita class"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/bhagavad-gita-classes-unbDF5G67O981IszJpVJu5letOf4K0.png"
                     alt="Bhagavad Gita Classes"
                     fill
                     className="object-cover"
@@ -318,7 +322,7 @@ export default function EventsPage() {
               <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48">
                   <Image
-                    src="/placeholder.svg?height=300&width=400&query=srimad bhagavatam study"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/srimad-bhagavatam-study-NHMHP4VizMTgHTv7etmrWKpjY3fjKM.png"
                     alt="Srimad Bhagavatam Study Groups"
                     fill
                     className="object-cover"
@@ -352,7 +356,7 @@ export default function EventsPage() {
               <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48">
                   <Image
-                    src="/placeholder-bfgnu.png"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/srimad-bhagavatam-study-QsJsgqonYn5J911F6crQxU1GdYZM5c.png"
                     alt="ISKCON Education Programs"
                     fill
                     className="object-cover"
@@ -480,7 +484,7 @@ export default function EventsPage() {
               <div className="md:flex items-center">
                 <div className="md:w-1/4 mb-4 md:mb-0 flex justify-center">
                   <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
-                    <Image src="/srila-prabhupada-portrait.png" alt="Srila Prabhupada" fill className="object-cover" />
+                    <Image src="https://rodpush.wordpress.com/wp-content/uploads/2015/03/prabu3333.jpg?w=640" alt="Srila Prabhupada" fill className="object-cover" />
                   </div>
                 </div>
                 <div className="md:w-3/4 md:pl-8">

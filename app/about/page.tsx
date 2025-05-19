@@ -19,11 +19,11 @@ export default function AboutPage() {
           <AnimateOnView animation="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0">
-                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">About us:</h1>
+                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Our Mission: Spreading the Teachings of Srila Prabhupada:</h1>
                 <p className="text-primary text-sm sm:text-base md:text-lg">Serving Śrī Krishna. Sustaining Dharma.</p>
                 <p className="text-primary text-sm:text-base md:text-lg">Inspiring Generations</p>
               </div>
-              <div className="w-full max-w-[250px] md:max-w-[300px]">
+              {/* <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
                   src="/images/golden-temple-illustration.png"
                   alt="Golden Temple Illustration"
@@ -31,7 +31,7 @@ export default function AboutPage() {
                   height={200}
                   className="w-full h-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </AnimateOnView>
         </div>
@@ -263,19 +263,19 @@ export default function AboutPage() {
                 name: "H.D.G A.C Bhaktivedanta Swami Prabhupada",
                 role: "Eternal Guru",
                 image:
-                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/srila-prabhupada-portrait-5WHZNoVXznyHuMriQ9mOwV6BXKBkWE.png",
+                  "/images/Prabhupadaji.jpeg",
               },
               {
                 name: "HG Tukaram Das",
                 role: "Spiritual Guide",
                 image:
-                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/tukaram-das-IKbLf1Im9lPwNEtqjVLlfjmSBJZwuq.png",
+                  "/images/Tukaram Das.jpeg",
               },
               {
                 name: "Bhakti Prabhu",
                 role: "Temple President",
                 image:
-                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/bhakti-prabhu-RDAYbXL9RXxU4vl1ESlBThr9RTdQRE.png",
+                  "/images/BhaktiPrabhu_ji.jpeg",
               },
             ].map((person, index) => (
               <AnimateOnView key={index} animation="fade-up" delay={index * 150} className="flex flex-col items-center">
@@ -423,7 +423,7 @@ export default function AboutPage() {
               <div className="lg:w-1/2 flex justify-center">
                 <div className="rounded-xl overflow-hidden shadow-lg max-w-[500px] w-full">
                   <Image
-                    src="/images/iskcon-temple-devotees.png"
+                    src="https://www.deityworship.com/wp-content/uploads/2020/08/CT86-170.jpg"
                     alt="ISKCON Temple with devotees performing aarti ceremony"
                     width={500}
                     height={375}

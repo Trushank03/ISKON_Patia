@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AnimateOnView } from "@/components/animate-on-view"
+import { CottageInquiryForm } from "@/components/cottage-inquiry-form"
 
 export default function CottagesPage() {
   return (
@@ -24,7 +25,7 @@ export default function CottagesPage() {
           <AnimateOnView animation="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0 md:w-3/5">
-                <h1 className="text-[#B94A3E] text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
                   Your Spiritual Second Home Awaits
                 </h1>
                 <p className="text-gray-800 text-sm sm:text-base md:text-lg mb-2">
@@ -283,14 +284,11 @@ export default function CottagesPage() {
       </section>
 
       {/* Inquiry Form */}
-      <section className="px-4 py-8 max-w-7xl mx-auto">
+      <section className="px-4 py-12 max-w-7xl mx-auto">
         <AnimateOnView animation="fade-up">
-          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">
+          <h2 className="text-primary text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4">
             Inquiry & Expression of Interest Form
           </h2>
-        </AnimateOnView>
-
-        <AnimateOnView animation="fade-up" delay={200}>
           <div className="max-w-2xl mx-auto text-center mb-8">
             <h3 className="text-gray-800 font-semibold text-base md:text-lg mb-2">
               Reserve Your Cottage – Limited Units Available
@@ -301,58 +299,7 @@ export default function CottagesPage() {
           </div>
         </AnimateOnView>
 
-        <AnimateOnView animation="fade-in" delay={300}>
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-6">
-              <h4 className="text-gray-800 font-medium text-sm md:text-lg mb-4">Form Fields:</h4>
-              <ul className="space-y-1 text-gray-700 text-xs sm:text-sm md:text-base">
-                <li>Full Name (Text Input)</li>
-                <li>Phone Number (Text Input – Mobile validation)</li>
-                <li>Email Address (Text Input – Email validation)</li>
-                <li>Preferred Unit Size (Select Dropdown):</li>
-                <li>Seva Owner – 600 sqft</li>
-                <li>Bhakti Owner – 750 sqft</li>
-                <li>Sankirtan Duplex – Custom</li>
-                <li>Message (Optional) (Multiple Lines)</li>
-              </ul>
-            </div>
-
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-4 h-4 border border-primary rounded flex items-center justify-center">
-                <div className="w-2 h-2 bg-primary rounded-sm"></div>
-              </div>
-              <span className="text-gray-800 text-xs sm:text-sm md:text-base">
-                I wish to schedule a site visit or video call
-              </span>
-            </div>
-
-            <div className="flex justify-center mb-6">
-              <button className="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-2 rounded-md text-sm sm:text-base md:text-lg transition-transform duration-300 hover:scale-105">
-                Submit
-              </button>
-            </div>
-
-            <div className="flex items-center justify-center space-x-2 mb-2">
-              <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center">
-                <span className="text-primary text-xs">✓</span>
-              </div>
-              <span className="text-gray-800 text-xs sm:text-sm md:text-base">
-                Request a Call from Seva Coordinator
-              </span>
-            </div>
-
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center">
-                <span className="text-primary text-xs">✓</span>
-              </div>
-              <span className="text-gray-800 text-xs sm:text-sm md:text-base">Auto-Reply Message (on submission)</span>
-            </div>
-
-            <p className="text-center text-primary text-xs sm:text-sm md:text-base italic">
-              "Thank you! Our team will connect with you within 24 hours with availability and details. Hare Krishna!"
-            </p>
-          </div>
-        </AnimateOnView>
+        <CottageInquiryForm />
       </section>
 
       {/* Call to Action */}
