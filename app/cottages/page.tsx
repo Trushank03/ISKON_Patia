@@ -32,7 +32,7 @@ export default function CottagesPage() {
                   Own a cottage in a 15-acre devotional sanctuary where Bhakti, sustainability, and serenity meet.
                 </p>
               </div>
-              <div className="w-full max-w-[250px] md:max-w-[300px]">
+              {/* <div className="w-full max-w-[250px] md:max-w-[300px]">
                 <Image
                   src="/images/temple-golden-illustration-new.png"
                   alt="Temple Illustration"
@@ -40,7 +40,7 @@ export default function CottagesPage() {
                   height={200}
                   className="w-full h-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </AnimateOnView>
         </div>
