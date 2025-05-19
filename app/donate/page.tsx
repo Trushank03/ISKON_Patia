@@ -114,15 +114,15 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* Bhagavad Gita Quote - Full Width White Background */}
+      {/* Srila Prabhupada Quote - Full Width White Background */}
       <section className="w-full bg-white py-6 md:py-8 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-gray-800 text-lg md:text-xl italic mb-2">
-              "Even a leaf, a flower, fruit or water offered with devotion is accepted by Krishna. Imagine what a temple
-              offered in love can do."
+              "The Lord is the bestower of all benedictions. If someone gives something to the Lord, he is not the
+              loser. He is the gainer by a million times."
             </p>
-            <p className="text-gray-700 italic">– Bhagavad Gita 9:26</p>
+            <p className="text-gray-700 italic">– Srila Prabhupada</p>
           </div>
         </div>
       </section>
@@ -244,8 +244,13 @@ export default function DonatePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
             <h2 className="text-center text-2xl font-bold mb-6" style={{ color: "#B94A3E" }}>
-              More than a Donation. It's a Spiritual Service.
+              ISKCON's donation section must emphasize service as a spiritual offering to Krishna.
             </h2>
+
+            <p className="text-gray-800 text-lg mb-6 text-center">
+              Support the mission of Lord Chaitanya and Srila Prabhupada by contributing to the construction and
+              maintenance of ISKCON Baranga-Patia
+            </p>
 
             <ul className="space-y-3">
               <li className="flex items-start">

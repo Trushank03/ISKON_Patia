@@ -307,7 +307,8 @@ export function Header() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/images/iskcon-logo.png"
+                  // src="/images/iskcon-logo.png"
+                  src="/images/output-onlinepngtools.png"
                   alt="ISKCON Logo"
                   width={80}
                   height={60}

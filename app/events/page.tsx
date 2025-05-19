@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Calendar, MapPin, Search, ChevronRight } from "lucide-react"
+import { Calendar, MapPin, Search, ChevronRight, Book, Users, GraduationCap, Heart, Clock, User } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AnimateOnView } from "@/components/animate-on-view"
@@ -31,7 +31,7 @@ export default function EventsPage() {
   //   fetchNotices()
   // }, [])
 
-    useEffect(() => {
+  useEffect(() => {
     const loadEvents = async () => {
       setIsLoading(true)
       try {
@@ -41,7 +41,7 @@ export default function EventsPage() {
           return
         }
 
-        setNotices(data.results)  // ✅ store only the `results` array
+        setNotices(data.results) // ✅ store only the `results` array
       } catch (err) {
         console.error(err)
         setError("An error occurred")
@@ -52,8 +52,6 @@ export default function EventsPage() {
 
     loadEvents()
   }, [])
-
-
 
   // Function to fetch all notices
   const fetchNotices = async () => {
@@ -184,6 +182,320 @@ export default function EventsPage() {
                 Join us for divine celebrations, spiritual discourses, and community gatherings that nourish the soul
                 and deepen your connection with Krishna.
               </p>
+            </div>
+          </AnimateOnView>
+        </div>
+      </section>
+
+      {/* Educational Programs Section - NEWLY ADDED */}
+      <section className="py-12 px-4 bg-amber-50/50">
+        <div className="max-w-7xl mx-auto">
+          <AnimateOnView animation="fade-up">
+            <div className="text-center mb-12">
+              <h2 className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Educational Programs</h2>
+              <p className="text-gray-800 text-base md:text-lg max-w-3xl mx-auto">
+                Our educational programs are rooted in the teachings of Lord Chaitanya Mahaprabhu. We offer classes on
+                Bhagavad Gita, Srimad Bhagavatam, and other Vedic literatures to help individuals deepen their
+                understanding of Krishna Consciousness.
+              </p>
+            </div>
+          </AnimateOnView>
+
+          {/* Three Images as Static Blocks */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <AnimateOnView animation="fade-up" delay={0}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+                <div className="relative h-64">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/bhagavad-gita-class-kaLYpsps1KbTsNFnKlsJ4i6gx5VjEe.png"
+                    alt="Bhagavad Gita Class"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-white text-xl font-bold">Bhagavad Gita Class</h3>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnView>
+
+            <AnimateOnView animation="fade-up" delay={150}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+                <div className="relative h-64">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/kirtan-devotees-up1Uu2nFl3s8ZEluuGnmLwPO7HLw39.png"
+                    alt="Kirtan Devotees"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-white text-xl font-bold">Kirtan Devotees</h3>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnView>
+
+            <AnimateOnView animation="fade-up" delay={300}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+                <div className="relative h-64">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/srimad-bhagavatam-study-group-MnwX14SsXHvXU9rP00upA68rXWYKT4.png"
+                    alt="Srimad Bhagavatam Study Group"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-white text-xl font-bold">Srimad Bhagavatam Study</h3>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnView>
+          </div>
+
+          {/* Bhakti Yoga Section */}
+          <AnimateOnView animation="fade-up" delay={150}>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+              <div className="md:flex">
+                <div className="md:w-1/3 relative h-64 md:h-auto">
+                  <Image src="/bhakti-yoga.png" alt="Bhakti Yoga Practice" fill className="object-cover" />
+                </div>
+                <div className="p-6 md:w-2/3">
+                  <h3 className="text-primary text-xl md:text-2xl font-bold mb-4">Bhakti Yoga: The Path of Devotion</h3>
+                  <p className="text-gray-700 mb-4">
+                    At ISKCON Baranga-Patia, we emphasize Bhakti Yoga (devotional service) as the most direct and
+                    sublime path to spiritual realization. Unlike other forms of yoga that focus primarily on physical
+                    postures or mental exercises, Bhakti Yoga centers on developing pure love for Lord Krishna through
+                    various devotional practices.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    These practices include chanting the Hare Krishna maha-mantra, studying sacred texts, offering
+                    service at the temple, participating in kirtans (devotional singing), and honoring Krishna prasadam
+                    (sanctified food).
+                  </p>
+                  <div className="flex items-center text-primary font-medium">
+                    <Heart className="mr-2" size={18} />
+                    <span>The essence of Bhakti Yoga is to awaken our dormant love for Krishna</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimateOnView>
+
+          {/* Programs Cards */}
+          <h3 className="text-primary text-xl md:text-2xl font-bold mb-6">Our Spiritual Education Programs</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <AnimateOnView animation="fade-up" delay={0}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
+                <div className="relative h-48">
+                  <Image
+                    src="/placeholder.svg?height=300&width=400&query=bhagavad gita class"
+                    alt="Bhagavad Gita Classes"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-0 left-0 bg-primary text-white p-2 rounded-br-lg">
+                    <Book size={20} />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-gray-800 text-lg font-bold mb-2">Bhagavad Gita Classes</h4>
+                  <div className="flex items-center text-gray-600 text-sm mb-3">
+                    <Clock size={14} className="mr-1" />
+                    <span>Every Sunday, 8:00 AM - 9:30 AM</span>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    Systematic study of the Bhagavad Gita with verse-by-verse explanations and practical applications
+                    for modern life. Classes are interactive and include Q&A sessions.
+                  </p>
+                  <Link
+                    href="/programs/bhagavad-gita"
+                    className="text-primary font-medium flex items-center hover:underline"
+                  >
+                    Learn More <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
+              </div>
+            </AnimateOnView>
+
+            <AnimateOnView animation="fade-up" delay={150}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
+                <div className="relative h-48">
+                  <Image
+                    src="/placeholder.svg?height=300&width=400&query=srimad bhagavatam study"
+                    alt="Srimad Bhagavatam Study Groups"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-0 left-0 bg-primary text-white p-2 rounded-br-lg">
+                    <Users size={20} />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-gray-800 text-lg font-bold mb-2">Srimad Bhagavatam Study Groups</h4>
+                  <div className="flex items-center text-gray-600 text-sm mb-3">
+                    <Clock size={14} className="mr-1" />
+                    <span>Weekdays, 7:00 AM - 8:00 AM</span>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    In-depth exploration of the Srimad Bhagavatam, the ripened fruit of Vedic literature. These study
+                    groups focus on understanding the pastimes of Lord Krishna and the philosophical teachings of the
+                    text.
+                  </p>
+                  <Link
+                    href="/programs/bhagavatam"
+                    className="text-primary font-medium flex items-center hover:underline"
+                  >
+                    Learn More <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
+              </div>
+            </AnimateOnView>
+
+            <AnimateOnView animation="fade-up" delay={300}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
+                <div className="relative h-48">
+                  <Image
+                    src="/placeholder-bfgnu.png"
+                    alt="ISKCON Education Programs"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-0 left-0 bg-primary text-white p-2 rounded-br-lg">
+                    <GraduationCap size={20} />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-gray-800 text-lg font-bold mb-2">ISKCON Education Programs (IEP)</h4>
+                  <div className="flex items-center text-gray-600 text-sm mb-3">
+                    <Clock size={14} className="mr-1" />
+                    <span>Various schedules available</span>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    Structured courses on Vaishnava philosophy, culture, and practices. These programs include Bhakti
+                    Sastri, Bhakti Vaibhava, and specialized workshops on various aspects of Krishna consciousness.
+                  </p>
+                  <Link href="/programs/iep" className="text-primary font-medium flex items-center hover:underline">
+                    Learn More <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
+              </div>
+            </AnimateOnView>
+          </div>
+
+          {/* Youth Programs & Retreats */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+            <div className="p-6">
+              <h3 className="text-primary text-xl md:text-2xl font-bold mb-6">Youth Programs & Spiritual Retreats</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <AnimateOnView animation="fade-up" delay={0}>
+                  <div className="border border-gray-200 rounded-lg p-5 hover:border-primary/30 transition-colors duration-300">
+                    <div className="flex items-start">
+                      <div className="bg-amber-100 p-2 rounded-full mr-4">
+                        <User size={20} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-gray-800 font-bold mb-2">Children's Sunday School</h4>
+                        <p className="text-gray-600 text-sm">
+                          Age-appropriate classes teaching Vaishnava values, stories from scriptures, and devotional
+                          activities for children ages 5-12.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateOnView>
+
+                <AnimateOnView animation="fade-up" delay={150}>
+                  <div className="border border-gray-200 rounded-lg p-5 hover:border-primary/30 transition-colors duration-300">
+                    <div className="flex items-start">
+                      <div className="bg-amber-100 p-2 rounded-full mr-4">
+                        <User size={20} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-gray-800 font-bold mb-2">Teen Bhakti Program</h4>
+                        <p className="text-gray-600 text-sm">
+                          Interactive sessions for teenagers to explore Krishna consciousness through discussions,
+                          activities, and service opportunities.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateOnView>
+
+                <AnimateOnView animation="fade-up" delay={300}>
+                  <div className="border border-gray-200 rounded-lg p-5 hover:border-primary/30 transition-colors duration-300">
+                    <div className="flex items-start">
+                      <div className="bg-amber-100 p-2 rounded-full mr-4">
+                        <User size={20} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-gray-800 font-bold mb-2">College Outreach</h4>
+                        <p className="text-gray-600 text-sm">
+                          Programs designed for university students, including philosophical discussions, prasadam
+                          distribution, and kirtan events on campus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateOnView>
+
+                <AnimateOnView animation="fade-up" delay={450}>
+                  <div className="border border-gray-200 rounded-lg p-5 hover:border-primary/30 transition-colors duration-300">
+                    <div className="flex items-start">
+                      <div className="bg-amber-100 p-2 rounded-full mr-4">
+                        <User size={20} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-gray-800 font-bold mb-2">Spiritual Retreats</h4>
+                        <p className="text-gray-600 text-sm">
+                          Weekend and week-long immersive experiences focusing on spiritual practices, deep study, and
+                          community building.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateOnView>
+              </div>
+
+              <div className="bg-amber-50 rounded-lg p-5 mt-6">
+                <h4 className="text-gray-800 font-bold mb-2">Upcoming Retreats</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-center text-gray-700">
+                    <Calendar size={16} className="mr-2 text-primary" />
+                    <span>June 15-17, 2024: Weekend Bhakti Immersion</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <Calendar size={16} className="mr-2 text-primary" />
+                    <span>July 10-17, 2024: Summer Spiritual Retreat</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <Calendar size={16} className="mr-2 text-primary" />
+                    <span>August 25-27, 2024: Krishna Janmashtami Special Retreat</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Srila Prabhupada Quote */}
+          <AnimateOnView animation="fade-up">
+            <div className="bg-primary/5 rounded-lg p-6 md:p-8 mb-12 border-l-4 border-primary">
+              <div className="md:flex items-center">
+                <div className="md:w-1/4 mb-4 md:mb-0 flex justify-center">
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                    <Image src="/srila-prabhupada-portrait.png" alt="Srila Prabhupada" fill className="object-cover" />
+                  </div>
+                </div>
+                <div className="md:w-3/4 md:pl-8">
+                  <blockquote className="text-gray-700 text-lg md:text-xl italic mb-4">
+                    "The best way to understand the philosophy of Krishna Consciousness is to engage in devotional
+                    service under the guidance of a bona fide spiritual master."
+                  </blockquote>
+                  <cite className="text-primary font-bold block">
+                    — His Divine Grace A.C. Bhaktivedanta Swami Prabhupada
+                  </cite>
+                  <p className="text-gray-600 mt-2 text-sm">
+                    Founder-Acharya of the International Society for Krishna Consciousness
+                  </p>
+                </div>
+              </div>
             </div>
           </AnimateOnView>
         </div>
