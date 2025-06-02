@@ -449,24 +449,30 @@ const updateNotice = async () => {
       <div className="bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="flex items-center h-12">
-            <Link href="/admin/dashboard" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
+            {/* <Link href="/admin/dashboard" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
               Dashboard
-            </Link>
+            </Link> */}
             <Link
               href="/admin/event-creation"
               className="text-primary border-b-2 border-primary px-3 py-2 text-sm font-medium"
             >
               Events
             </Link>
-            <Link href="/admin/donations" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
+            <Link
+              href="/admin/blog-management"
+              className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium"
+            >
+              Blog
+            </Link>
+            {/* <Link href="/admin/donations" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
               Donations
-            </Link>
-            <Link href="/admin/users" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
+            </Link> */}
+            {/* <Link href="/admin/users" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
               Users
-            </Link>
-            <Link href="/admin/settings" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
+            </Link> */}
+            {/* <Link href="/admin/settings" className="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium">
               Settings
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
