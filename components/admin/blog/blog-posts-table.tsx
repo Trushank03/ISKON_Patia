@@ -115,9 +115,9 @@ export function BlogPostsTable({ posts, onEdit, onDelete }: BlogPostsTableProps)
                     )}
                   </Badge>
                 </TableCell>
-                {/* <TableCell className="hidden sm:table-cell py-2 text-sm text-gray-600">
+                <TableCell className="hidden sm:table-cell py-2 text-sm text-gray-600">
                   {formatDate(post.published_at)}
-                </TableCell> */}
+                </TableCell>
                 <TableCell className="text-right py-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
