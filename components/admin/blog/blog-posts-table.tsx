@@ -115,9 +115,9 @@ export function BlogPostsTable({ posts, onEdit, onDelete }: BlogPostsTableProps)
                     )}
                   </Badge>
                 </TableCell>
-                <TableCell className="hidden sm:table-cell py-2 text-sm text-gray-600">
+                {/* <TableCell className="hidden sm:table-cell py-2 text-sm text-gray-600">
                   {formatDate(post.published_at)}
-                </TableCell>
+                </TableCell> */}
                 <TableCell className="text-right py-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -145,7 +145,7 @@ export function BlogPostsTable({ posts, onEdit, onDelete }: BlogPostsTableProps)
       </div>
 
       <AlertDialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
-        <AlertDialogContent className="sm:max-w-[425px] bg-white">
+        <AlertDialogContent className="sm:max-w-[425px]">
           <AlertDialogHeader className="space-y-3">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
               <Trash2 className="h-6 w-6 text-red-600" />

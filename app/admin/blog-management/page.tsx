@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { PlusCircle, List, Tag, ChevronDown, ChevronUp, AlertCircle, RefreshCw } from "lucide-react"
+import dynamic from "next/dynamic"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,20 +12,35 @@ import { AnimateOnView } from "@/components/animate-on-view"
 import { useToast } from "@/hooks/use-toast"
 
 import type { BlogPost, Category } from "@/types/blog"
-import { getBlogPostsAdmin, getCategoriesAdmin } from "@/lib/blog-api"
-import { BlogPostForm } from "@/components/admin/blog/blog-post-form"
 import { BlogPostsTable } from "@/components/admin/blog/blog-posts-table"
-import { CategoryForm } from "@/components/admin/blog/category-form"
 import { CategoriesTable } from "@/components/admin/blog/categories-table"
 
-// Remove these imports
-// import { handleDeleteBlogPost } from "@/app/admin/blog-actions"
-// import { handleDeleteCategory } from "@/app/admin/category-actions"
+// Dynamic imports to prevent SSR issues
+const BlogPostForm = dynamic(
+  () => import("@/components/admin/blog/blog-post-form").then((mod) => ({ default: mod.BlogPostForm })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center p-8">
+        <RefreshCw className="h-6 w-6 animate-spin" />
+        <span className="ml-2">Loading form...</span>
+      </div>
+    ),
+  },
+)
 
-// Add these imports instead
-import { deleteBlogPost, deleteCategory } from "@/lib/blog-api"
-import { revalidateBlogPaths } from "@/app/admin/blog-actions"
-import { revalidateCategoryPaths } from "@/app/admin/category-actions"
+const CategoryForm = dynamic(
+  () => import("@/components/admin/blog/category-form").then((mod) => ({ default: mod.CategoryForm })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center p-8">
+        <RefreshCw className="h-6 w-6 animate-spin" />
+        <span className="ml-2">Loading form...</span>
+      </div>
+    ),
+  },
+)
 
 type AdminSection = "viewPosts" | "addPost" | "editPost" | "viewCategories" | "addCategory" | "editCategory"
 
@@ -58,13 +74,17 @@ export default function BlogManagementPage() {
         throw new Error("Authentication required. Please log in to access admin features.")
       }
 
-      const [postsData, categoriesData] = await Promise.all([
-        getBlogPostsAdmin(1, 100, "", "", authToken),
-        getCategoriesAdmin(1, 100, authToken),
+      const [postsResponse, categoriesResponse] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/`, {
+          headers: { Authorization: `JWT ${authToken}` },
+        }).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/categories/`, {
+          headers: { Authorization: `JWT ${authToken}` },
+        }).then((res) => res.json()),
       ])
 
-      setBlogPosts(postsData.results || [])
-      setCategories(categoriesData.results || [])
+      setBlogPosts(postsResponse.results || [])
+      setCategories(categoriesResponse.results || [])
     } catch (err: any) {
       console.error("Error fetching blog management data:", err)
 
@@ -97,7 +117,10 @@ export default function BlogManagementPage() {
   }, [toast, router])
 
   useEffect(() => {
-    fetchBlogData()
+    // Only run on client-side
+    if (typeof window !== "undefined") {
+      fetchBlogData()
+    }
   }, [fetchBlogData])
 
   const handleEditPost = (post: BlogPost) => {
@@ -118,8 +141,17 @@ export default function BlogManagementPage() {
         return
       }
 
-      await deleteBlogPost(slug, authToken)
-      await revalidateBlogPaths(slug)
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/${slug}/`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `JWT ${authToken}` },
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error("Failed to delete blog post")
+      }
 
       toast({ title: "Success", description: "Blog post deleted successfully." })
       fetchBlogData() // Refresh data
@@ -151,8 +183,17 @@ export default function BlogManagementPage() {
         return
       }
 
-      await deleteCategory(slug, authToken)
-      await revalidateCategoryPaths(slug)
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/categories/${slug}/`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `JWT ${authToken}` },
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error("Failed to delete category")
+      }
 
       toast({ title: "Success", description: "Category deleted successfully." })
       fetchBlogData() // Refresh data

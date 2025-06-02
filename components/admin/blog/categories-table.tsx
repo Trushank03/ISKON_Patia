@@ -16,22 +16,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { handleDeleteCategoryAction } from "@/app/admin/category-actions" // Corrected import name
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 
 interface CategoriesTableProps {
   categories: Category[]
   onEdit: (category: Category) => void
-  // onDelete is now handled internally by calling the server action
+  onDelete: (slug: string) => Promise<void>
 }
 
-export function CategoriesTable({ categories, onEdit }: CategoriesTableProps) {
+export function CategoriesTable({ categories, onEdit, onDelete }: CategoriesTableProps) {
   const { toast } = useToast()
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(null)
-  // We need a way to refresh the list after deletion, typically by calling a prop function
-  // or relying on the parent component's re-fetch mechanism triggered by revalidatePath.
 
   const handleDeleteClick = (category: Category) => {
     setCategoryToDelete(category)
@@ -40,12 +37,15 @@ export function CategoriesTable({ categories, onEdit }: CategoriesTableProps) {
 
   const confirmDelete = async () => {
     if (categoryToDelete) {
-      const result = await handleDeleteCategoryAction(categoryToDelete.slug)
-      if (result.success) {
+      try {
+        await onDelete(categoryToDelete.slug)
         toast({ title: "Success", description: "Category deleted successfully." })
-        // Parent component (`BlogManagementPage`) should re-fetch data due to revalidatePath
-      } else {
-        toast({ variant: "destructive", title: "Error", description: result.error || "Failed to delete category." })
+      } catch (error: any) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: error.message || "Failed to delete category.",
+        })
       }
     }
     setShowDeleteConfirm(false)

@@ -2,33 +2,27 @@
 
 import { useState, useEffect, useMemo } from "react"
 import { useForm, Controller } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
-import { createBlogPostWithFormData, updateBlogPost } from "@/lib/blog-api"
 import type { BlogPost, Category } from "@/types/blog"
 import { XCircle, UploadCloud, ImageIcon } from "lucide-react"
 
-// Zod schema for validation
-const blogPostSchema = z.object({
-  title: z.string().min(3, "Title must be at least 3 characters long."),
-  content: z.string().min(10, "Content must be at least 10 characters long."),
-  excerpt: z.string().optional(),
-  slug: z.string().optional(),
-  is_published: z.boolean().default(false),
-  is_featured: z.boolean().default(false),
-  reading_time: z.number().int().min(1).default(5),
-  category_ids: z.array(z.string()).default([]),
-  featured_image: z.instanceof(FileList).optional(),
-  remove_featured_image: z.boolean().default(false),
-})
-
-type BlogPostFormData = z.infer<typeof blogPostSchema>
+interface BlogPostFormData {
+  title: string
+  content: string
+  excerpt?: string
+  slug?: string
+  is_published: boolean
+  is_featured: boolean
+  reading_time: number
+  category_ids: string[]
+  featured_image?: FileList
+  remove_featured_image: boolean
+}
 
 interface BlogPostFormProps {
   initialData?: BlogPost
@@ -53,7 +47,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
       is_featured: initialData?.is_featured || false,
       reading_time: initialData?.reading_time || 5,
       category_ids: initialData?.categories?.map((cat) => cat.id.toString()) || [],
-      featured_image: undefined,
       remove_featured_image: false,
     }),
     [initialData],
@@ -68,7 +61,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
     watch,
     formState: { errors },
   } = useForm<BlogPostFormData>({
-    resolver: zodResolver(blogPostSchema),
     defaultValues,
   })
 
@@ -140,11 +132,19 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
         formData.append("remove_featured_image", "true")
       }
 
-      let result
-      if (initialData?.slug) {
-        result = await updateBlogPost(initialData.slug, formData, authToken)
-      } else {
-        result = await createBlogPostWithFormData(formData, authToken)
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/`
+      const url = initialData?.slug ? `${apiUrl}${initialData.slug}/` : apiUrl
+      const method = initialData?.slug ? "PUT" : "POST"
+
+      const response = await fetch(url, {
+        method,
+        headers: { Authorization: `JWT ${authToken}` },
+        body: formData,
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.detail || errorData.message || "Failed to save blog post")
       }
 
       toast({
@@ -181,7 +181,7 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
         <Label htmlFor="title" className="text-sm font-medium text-gray-700">
           Title <span className="text-red-500">*</span>
         </Label>
-        <Input id="title" {...register("title")} className="mt-1 block w-full" />
+        <Input id="title" {...register("title", { required: "Title is required" })} className="mt-1 block w-full" />
         {errors.title && <p className="mt-1 text-xs text-red-600">{errors.title.message}</p>}
       </div>
 
@@ -189,7 +189,12 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
         <Label htmlFor="content" className="text-sm font-medium text-gray-700">
           Content <span className="text-red-500">*</span>
         </Label>
-        <Textarea id="content" {...register("content")} rows={10} className="mt-1 block w-full" />
+        <Textarea
+          id="content"
+          {...register("content", { required: "Content is required" })}
+          rows={10}
+          className="mt-1 block w-full"
+        />
         {errors.content && <p className="mt-1 text-xs text-red-600">{errors.content.message}</p>}
       </div>
 
@@ -204,7 +209,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
           className="mt-1 block w-full"
           placeholder="A brief summary of the blog post"
         />
-        {errors.excerpt && <p className="mt-1 text-xs text-red-600">{errors.excerpt.message}</p>}
       </div>
 
       <div>
@@ -218,7 +222,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
           placeholder="my-blog-post-slug (leave empty for auto-generation)"
         />
         <p className="mt-1 text-xs text-gray-500">If left empty, a slug will be generated from the title.</p>
-        {errors.slug && <p className="mt-1 text-xs text-red-600">{errors.slug.message}</p>}
       </div>
 
       <div>
@@ -239,7 +242,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
             />
           )}
         />
-        {errors.reading_time && <p className="mt-1 text-xs text-red-600">{errors.reading_time.message}</p>}
       </div>
 
       <div className="space-y-2">
@@ -271,7 +273,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
             </div>
           ))}
         </div>
-        {errors.category_ids && <p className="mt-1 text-xs text-red-600">{errors.category_ids.message}</p>}
       </div>
 
       <div>
@@ -319,9 +320,6 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
             accept="image/*"
           />
         </div>
-        {errors.featured_image && (
-          <p className="mt-1 text-xs text-red-600">{errors.featured_image.message as string}</p>
-        )}
       </div>
 
       <div className="flex flex-col space-y-4">
