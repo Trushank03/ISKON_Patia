@@ -172,8 +172,8 @@
 // }
 
 // API base URL
-const PRODUCTION_API_BASE_URL = "http://127.0.0.1:8000/api"
-// const PRODUCTION_API_BASE_URL = "https://iskconbarangapatia.com/api"
+// const PRODUCTION_API_BASE_URL = "http://127.0.0.1:8000/api"
+const PRODUCTION_API_BASE_URL = "https://iskconbarangapatia.com/api"
 
 // Token storage keys
 const ACCESS_TOKEN_KEY = "sanatana_access_token"

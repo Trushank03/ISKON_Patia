@@ -20,6 +20,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { path: "/events", label: "Education & Programs" },
     { path: "/facilities", label: "Temples & Seva" },
     { path: "/cottages", label: "Cottages" },
+    { path: "/blog", label: "Blog" },
     { path: "/donate", label: "Donation" },
     { path: "/contact", label: "Contact us" },
   ]

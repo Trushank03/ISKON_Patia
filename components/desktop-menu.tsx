@@ -21,6 +21,7 @@ export function DesktopMenu({ isOpen, onClose }: DesktopMenuProps) {
     { path: "/facilities", label: "Temples & Seva" },
     { path: "/cottages", label: "Cottages" },
     { path: "/donate", label: "Donation" },
+    { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact us" },
   ]
 
