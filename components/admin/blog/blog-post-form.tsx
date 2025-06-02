@@ -132,7 +132,7 @@ export function BlogPostForm({ initialData, allCategories, onSuccess, onCancel }
         formData.append("remove_featured_image", "true")
       }
 
-      const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/`
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL || "https://iskconbarangapatia.com/api"}/blog/blogs/`
       const url = initialData?.slug ? `${apiUrl}${initialData.slug}/` : apiUrl
       const method = initialData?.slug ? "PUT" : "POST"
 

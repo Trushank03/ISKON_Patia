@@ -75,10 +75,10 @@ export default function BlogManagementPage() {
       }
 
       const [postsResponse, categoriesResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "https://iskconbarangapatia.com/api"}/blog/blogs/`, {
           headers: { Authorization: `JWT ${authToken}` },
         }).then((res) => res.json()),
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/categories/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "https://iskconbarangapatia.com/api"}/blog/categories/`, {
           headers: { Authorization: `JWT ${authToken}` },
         }).then((res) => res.json()),
       ])
@@ -142,7 +142,7 @@ export default function BlogManagementPage() {
       }
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/blogs/${slug}/`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || "https://iskconbarangapatia.com/api"}/blog/blogs/${slug}/`,
         {
           method: "DELETE",
           headers: { Authorization: `JWT ${authToken}` },
@@ -184,7 +184,7 @@ export default function BlogManagementPage() {
       }
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api"}/blog/categories/${slug}/`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || "https://iskconbarangapatia.com/api"}/blog/categories/${slug}/`,
         {
           method: "DELETE",
           headers: { Authorization: `JWT ${authToken}` },
