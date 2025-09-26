@@ -859,6 +859,23 @@ export function Footer() {
             </div>
           </motion.div>
         </div>
+        
+        {/* Admin Login Button */}
+<motion.div
+  className="flex justify-center mt-6"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  <Link
+    href="/admin-login"
+    className="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-md shadow-md 
+               hover:bg-primary/90 transition-colors"
+  >
+    Admin Login
+  </Link>
+</motion.div>
 
         {/* Copyright */}
         <motion.div
